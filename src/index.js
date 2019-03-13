@@ -20,7 +20,7 @@ class UITwitter extends React.Component{
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            HOLA
+            HOLA<i class="material-icons">done</i>
           </div>
         </div>
       </div>
