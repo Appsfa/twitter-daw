@@ -22,22 +22,65 @@ class UITwitter extends React.Component{
   constructor() {
      super();
      this.profile = {
-      user: "@FabIslasM",
+      user: "@Fab",
       name: "Javian con B de Vaca",
       photo: "https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg"
     };
 
-    this.trends = {
-
-    };
+    this.trends = [
+      {
+        trend: "Cristiano Ronaldo",
+        content: 'La Juventus completa la remontada ante el Atlético de Madrid <span class="ec ec-black-circle"></span><span class="ec ec-soccer"></span><span class="ec ec-red-circle"></span>',
+      },
+      {
+        trend: "#FelizMiercoles",
+        content: '58,2 mil Tweets',
+      },
+      {
+        trend: "Bofo",
+        content: '9.210 Tweets',
+      },
+      {
+        trend: "#WhatsApp",
+        content: '7.814 Tweets',
+      },
+      {
+        trend: "#AlfaEnElVive",
+        content: '3.272 Tweets',
+      },
+      {
+        trend: "#FICG34PosterGDT",
+        content: '',
+      },
+      {
+        trend: "Torre Bancomer",
+        content: 'Desalojan edificios de Bancomer por presunta amenaza de bomba',
+      },
+      {
+        trend: "#TeamInterjet",
+        content: '',
+      },
+      {
+        trend: "Tears for Fears",
+        content: '',
+      },
+    ];
 
     this.tweets = [
       {
-        user: "",
-        name: "",
-        photo: "",
-        tweet: "",
-        time: "",
+        user: "@Fab",
+        name: "Javian con B de Vaca",
+        photo: "https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg",
+        tweet: "LO LOGRAMOS",
+        time: "1m",
+      },
+
+      {
+        user: "@Sirvent94",
+        name: "Sirvent",
+        photo: "https://pbs.twimg.com/profile_images/478571967809732608/gUMBaY9F_400x400.jpeg",
+        tweet: "LO LOGRAMOS x2",
+        time: "1m",
       }
     ];
    }
@@ -114,69 +157,18 @@ class UITwitter extends React.Component{
                       {/* TENDENCIAS */}
                       <div class="col-12 mt-3 bg-white pt-2">
                         <big><b>Tendencias para ti </b></big><span><small class="text-primary"> Cambiar</small></span>
-                        {/* <span class="ec ec-1234"></span> */}
-                        <p>
-                          <b class="text-primary">Cristiano Ronaldo</b>
-                          <p class="line-height-0">
-                            <small class="text-secondary line-height-0">La Juventus completa la remontada ante el Atlético de Madrid </small><span class="ec ec-black-circle"></span><span class="ec ec-soccer"></span><span class="ec ec-red-circle"></span>
-                          </p>
-                        </p>
-
-                        <p>
-                          <b class="text-primary">#La Voz Azteca</b>
-                          <p class="line-height-0">
-                            <small class="text-secondary line-height-0">Inicia La Voz en Azteca y estos son los equipos</small>
-                          </p>
-                        </p>
-
-                        <p>
-                          <b class="text-primary">#Feliz Miercoles</b>
-                          <p class="line-height-0">
-                            <small class="text-secondary line-height-0">47,1 mil Tweets</small>
-                          </p>
-                        </p>
-
-                        <p>
-                          <b class="text-primary">#AMiExLeDeseo</b>
-                          <p class="line-height-0">
-                            <small class="text-secondary line-height-0">Guacala</small>
-                          </p>
-                        </p>
-
-                        <p>
-                          <b class="text-primary">#AlfaEnElVive</b>
-                          <p class="line-height-0">
-                            <small class="text-secondary line-height-0">2.915 Tweets</small>
-                          </p>
-                        </p>
-
-                        <p>
-                          <b class="text-primary">Bofo</b>
-                          <p class="line-height-0">
-                            <small class="text-secondary line-height-0">5.306 Tweets</small>
-                          </p>
-                        </p>
-
-                        <p>
-                          <b class="text-primary">#MeAlquiloComo</b>
-                          <p class="line-height-0">
-                            <small class="text-secondary line-height-0">1.404 Tweets</small>
-                          </p>
-                        </p>
-
-                        <p>
-                          <b class="text-primary">#Poderoso</b>
-                          <p class="line-height-0">
-                            <small class="text-secondary line-height-0"></small>
-                          </p>
-                        </p>
-
-                        <p>
-                          <b class="text-primary">#NecesitoPilasPara</b>
-                          <p class="line-height-0">
-                            <small class="text-secondary line-height-0">1.030 Tweets</small>
-                          </p>
-                        </p>
+                        {
+                          this.trends.map((trend, i) => {
+                            return(
+                              <div>
+                                <b class="text-primary">{trend.trend}</b>
+                                <p class="line-height-0">
+                                  <small class="text-secondary line-height-0">{trend.content}</small>
+                                </p>
+                              </div>
+                            )
+                          })
+                        }
 
                       </div>
 
@@ -205,8 +197,36 @@ class UITwitter extends React.Component{
                                     </div>
                                   </div>
 
+                                  {/* TWEETS */}
                                   <div class="col-12">
-
+                                    <div class="container-fluid p-0">
+                                      <div class="row">
+                                        {
+                                          this.tweets.map((tweet, i) => {
+                                            return(
+                                              <div class="col-12">
+                                                <div class="container-fluid p-0">
+                                                  <div class="row">
+                                                    <div class="col-2 text-right">
+                                                      <img src={tweet.photo} width="45px" class="rounded-circle"/>
+                                                    </div>
+                                                    <div class="col-10">
+                                                      <b>{tweet.name} </b> <span class="text-secondary">{tweet.user} </span> - <span class="text-secondary">{tweet.time} </span>
+                                                      <p>
+                                                        {tweet.tweet}
+                                                      </p>
+                                                    </div>
+                                                    <div class="col-12 p-0">
+                                                      <div class="dropdown-divider"></div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            )
+                                          })
+                                        }
+                                      </div>
+                                    </div>
                                   </div>
 
                                 </div>
