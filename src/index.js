@@ -13,7 +13,34 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
+let profile = {
+
+};
+
 class UITwitter extends React.Component{
+
+  constructor() {
+     super();
+     this.profile = {
+      user: "@FabIslasM",
+      name: "Javian con B de Vaca",
+      photo: "https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg"
+    };
+
+    this.trends = {
+
+    };
+
+    this.tweets = [
+      {
+        user: "",
+        name: "",
+        photo: "",
+        tweet: "",
+        time: "",
+      }
+    ];
+   }
 
   render(){
     return (
@@ -44,16 +71,17 @@ class UITwitter extends React.Component{
 
                             <div class="col-12">
                               <div class="container-fluid p-0">
-                                <div class="row">
+                                <div class="row d-flex position-relative" style={{top: -25 + 'px'}}>
 
-                                  <div class="col-4">
-                                    <img src="https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg" width="100%" alt="foto" class="rounded-circle border border-whi"/>
+                                  <div class="col-4 align-self-start">
+                                    <img src={this.profile.photo} width="100%" alt="foto" class="rounded-circle border border-3"/>
+                                    <br></br>
                                   </div>
 
-                                  <div class="col-8">
-                                    <b class="name-user">Javian con B de vaca</b>
+                                  <div class="col-8 align-self-end">
+                                    <b class="name-user">{this.profile.name}</b>
                                     <br/>
-                                    <span class="text-secondary">@FabIslasM</span>
+                                    <span class="text-secondary">{this.profile.user}</span>
                                   </div>
 
                                 </div>
@@ -159,10 +187,30 @@ class UITwitter extends React.Component{
                   <div class="container-fluid">
                     <div class="row">
                       <div class="col-12 bg-white">
-                        <div class="container-fluid">
+                        <div class="container-fluid p-0">
                           <div class="row">
                             <div class="col-12">
-                              {/* CONTENIDO */}
+                              <div class="container-fluid p-0">
+                                <div class="row">
+
+                                  <div class="col-12 bg-secondary py-2">
+                                    <div class="input-group">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text bg-transparent border-0"><img src={this.profile.photo} width="26px" alt="foto" class="rounded-circle"/></span>
+                                      </div>
+                                      <input type="text" class="form-control border-right-0 border-right-25" id="txtTweet1" placeholder="¿Qué esta pasando?"/>
+                                      <div class="input-group-append border-left-0">
+                                        <span class="input-group-text bg-white border-left-0 border-left-25"><i class="material-icons text-primary">insert_photo</i></span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-12">
+
+                                  </div>
+
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -177,7 +225,7 @@ class UITwitter extends React.Component{
                         <div class="container-fluid">
                           <div class="row">
                             <div class="col-12">
-                              {/* CONTENIDO */}
+                              CONTENIDO
                             </div>
                           </div>
                         </div>
