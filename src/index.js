@@ -23,17 +23,62 @@ class UITwitter extends React.Component{
 
           </div>
           <div class="col-10">
-            <div class="container-fluid mt-4">
+            <div class="container-fluid">
               <div class="row pt-2">
                 <div class="col-3">
-                  <div class="container-fluid">
+                  <div class="container-fluid p-0">
                     <div class="row">
                       <div class="col-12 bg-white">
-                        <div class="container-fluid">
+                        <div class="container-fluid p-0">
                           <div class="row">
-                            <div class="col-12">
-                              CONTENIDO
+                            {/* IMAGEN DE PORTADA */}
+                            <div class="col-12 p-0">
+                              {/* CONTENIDO */}
+                              <div class="bg-facebook-me">
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                              </div>
                             </div>
+
+                            <div class="col-12">
+                              <div class="container-fluid p-0">
+                                <div class="row">
+
+                                  <div class="col-4">
+                                    <img src="https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg" width="100%" alt="foto" class="rounded-circle border border-whi"/>
+                                  </div>
+
+                                  <div class="col-8">
+                                    <b class="name-user">Javian con B de vaca</b>
+                                    <br/>
+                                    <span class="text-secondary">@FabIslasM</span>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-12">
+                              <div class="container-fluid p-0">
+                                <div class="row">
+                                  <div class="col-4">
+                                    <small><b class="text-secondary">Tweets</b></small>
+                                    <h5 class="text-primary"><b>6.334</b></h5>
+                                  </div>
+                                  <div class="col-4">
+                                    <small><b class="text-secondary">Siguiendo</b></small>
+                                    <h5 class="text-primary"><b>187</b></h5>
+                                  </div>
+                                  <div class="col-4">
+                                    <small><b class="text-secondary">Seguidores</b></small>
+                                    <h5 class="text-primary"><b>192</b></h5>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
                           </div>
                         </div>
                       </div>
@@ -47,7 +92,7 @@ class UITwitter extends React.Component{
                         <div class="container-fluid">
                           <div class="row">
                             <div class="col-12">
-                              CONTENIDO
+                              {/* CONTENIDO */}
                             </div>
                           </div>
                         </div>
@@ -62,7 +107,7 @@ class UITwitter extends React.Component{
                         <div class="container-fluid">
                           <div class="row">
                             <div class="col-12">
-                              CONTENIDO
+                              {/* CONTENIDO */}
                             </div>
                           </div>
                         </div>

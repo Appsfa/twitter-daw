@@ -32,3 +32,14 @@ code {
 .bg-white{
   background-color: white;
 }
+
+.bg-facebook-me{
+  background-image: url(media/image/view-chihuahua.jpg);
+  background-position: 0% 25%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.name-user{
+  font-size: 2vh
+}
