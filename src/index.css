@@ -14,17 +14,21 @@ code {
 }
 
 .bg-primary{
-  background-color: rgb(231, 236, 240);
+  background-color: rgb(231, 236, 240) !important;
 }
 
 .bg-secondary{
-  background-color: rgb(234, 247, 252);
+  background-color: rgb(234, 247, 252) !important;
 }
 
 .text-primary{
-  color: rgb(81, 179, 235);
+  color: rgb(81, 179, 235) !important;
 }
 
 .text-secondary{
-  color: rgb(105, 117, 126);
+  color: rgb(105, 117, 126) !important;
+}
+
+.bg-white{
+  background-color: white;
 }
