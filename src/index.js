@@ -82,6 +82,76 @@ class UITwitter extends React.Component{
                           </div>
                         </div>
                       </div>
+
+                      {/* TENDENCIAS */}
+                      <div class="col-12 mt-3 bg-white pt-2">
+                        <big><b>Tendencias para ti </b></big><span><small class="text-primary"> Cambiar</small></span>
+                        {/* <span class="ec ec-1234"></span> */}
+                        <p>
+                          <b class="text-primary">Cristiano Ronaldo</b>
+                          <p class="line-height-0">
+                            <small class="text-secondary line-height-0">La Juventus completa la remontada ante el Atlético de Madrid </small><span class="ec ec-black-circle"></span><span class="ec ec-soccer"></span><span class="ec ec-red-circle"></span>
+                          </p>
+                        </p>
+
+                        <p>
+                          <b class="text-primary">#La Voz Azteca</b>
+                          <p class="line-height-0">
+                            <small class="text-secondary line-height-0">Inicia La Voz en Azteca y estos son los equipos</small>
+                          </p>
+                        </p>
+
+                        <p>
+                          <b class="text-primary">#Feliz Miercoles</b>
+                          <p class="line-height-0">
+                            <small class="text-secondary line-height-0">47,1 mil Tweets</small>
+                          </p>
+                        </p>
+
+                        <p>
+                          <b class="text-primary">#AMiExLeDeseo</b>
+                          <p class="line-height-0">
+                            <small class="text-secondary line-height-0">Guacala</small>
+                          </p>
+                        </p>
+
+                        <p>
+                          <b class="text-primary">#AlfaEnElVive</b>
+                          <p class="line-height-0">
+                            <small class="text-secondary line-height-0">2.915 Tweets</small>
+                          </p>
+                        </p>
+
+                        <p>
+                          <b class="text-primary">Bofo</b>
+                          <p class="line-height-0">
+                            <small class="text-secondary line-height-0">5.306 Tweets</small>
+                          </p>
+                        </p>
+
+                        <p>
+                          <b class="text-primary">#MeAlquiloComo</b>
+                          <p class="line-height-0">
+                            <small class="text-secondary line-height-0">1.404 Tweets</small>
+                          </p>
+                        </p>
+
+                        <p>
+                          <b class="text-primary">#Poderoso</b>
+                          <p class="line-height-0">
+                            <small class="text-secondary line-height-0"></small>
+                          </p>
+                        </p>
+
+                        <p>
+                          <b class="text-primary">#NecesitoPilasPara</b>
+                          <p class="line-height-0">
+                            <small class="text-secondary line-height-0">1.030 Tweets</small>
+                          </p>
+                        </p>
+
+                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -130,7 +200,7 @@ class UITwitter extends React.Component{
 class HeaderTwitter extends React.Component{
   render(){
     return(
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         {/* <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
