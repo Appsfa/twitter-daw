@@ -4,6 +4,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faIgloo } from '@fortawesome/free-solid-svg-icons'
+library.add(faIgloo)
 // import $ from 'jquery';
 
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -81,6 +85,20 @@ class UITwitter extends React.Component{
         photo: "https://pbs.twimg.com/profile_images/478571967809732608/gUMBaY9F_400x400.jpeg",
         tweet: "LO LOGRAMOS x2",
         time: "1m",
+      }
+    ];
+
+    this.suggests = [
+      {
+        user: "@Fab",
+        name: "Javian con B de Vaca",
+        photo: "https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg",
+      },
+
+      {
+        user: "@Sirvent94",
+        name: "Sirvent",
+        photo: "https://pbs.twimg.com/profile_images/478571967809732608/gUMBaY9F_400x400.jpeg",
       }
     ];
    }
@@ -205,16 +223,23 @@ class UITwitter extends React.Component{
                                           this.tweets.map((tweet, i) => {
                                             return(
                                               <div class="col-12">
-                                                <div class="container-fluid p-0">
+                                                <div class="container-fluid p-0 pt-2">
                                                   <div class="row">
                                                     <div class="col-2 text-right">
                                                       <img src={tweet.photo} width="45px" class="rounded-circle"/>
                                                     </div>
                                                     <div class="col-10">
-                                                      <b>{tweet.name} </b> <span class="text-secondary">{tweet.user} </span> - <span class="text-secondary">{tweet.time} </span>
+                                                      <b>{tweet.name} </b> <span class="text-secondary">{tweet.user} </span> - <span class="text-secondary">{tweet.time} </span> <i class="material-icons float-right text-secondary">keyboard_arrow_down</i>
                                                       <p>
                                                         {tweet.tweet}
                                                       </p>
+                                                      <div class="container-fluid p-0">
+                                                        <div class="row">
+                                                          <div class="col-12">
+                                                            <FontAwesomeIcon icon="igloo" />
+                                                          </div>
+                                                        </div>
+                                                      </div>
                                                     </div>
                                                     <div class="col-12 p-0">
                                                       <div class="dropdown-divider"></div>
