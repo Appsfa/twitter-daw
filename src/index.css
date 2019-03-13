@@ -78,3 +78,33 @@ input:-moz-placeholder{
 .border-left-25{
   border-radius: 0px 8px 8px 0px !important;
 }
+
+.border-25{
+  border-radius: 25px 25px 25px 25px !important;
+}
+
+.icon-sm{
+  font-size: 18px
+}
+
+.line-height-1{
+  line-height: 1.2;
+}
+
+li.nav-item.active.text-primary{
+  color: rgb(81, 179, 235) !important;
+}
+
+.btn-primary{
+  background-color: rgb(103, 193, 238);
+  border-color: rgb(103, 193, 238);
+}
+
+.btn-primary:hover{
+  background-color: rgb(67, 188, 249);
+  border-color: rgb(67, 188, 249);
+}
+
+input.form-control.search{
+  border-radius: 25px 25px 25px 25px !important;
+}

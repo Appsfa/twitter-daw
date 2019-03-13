@@ -7,7 +7,9 @@ import './index.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIgloo } from '@fortawesome/free-solid-svg-icons'
-library.add(faIgloo)
+// import { faComment } from '@fortawesome/free-solid-svg-icons'
+import { faComment, faRetweet } from '@fortawesome/free-solid-svg-icons'
+library.add(faIgloo, faComment, faRetweet)
 // import $ from 'jquery';
 
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -235,8 +237,9 @@ class UITwitter extends React.Component{
                                                       </p>
                                                       <div class="container-fluid p-0">
                                                         <div class="row">
-                                                          <div class="col-12">
-                                                            <FontAwesomeIcon icon="igloo" />
+                                                          <div class="col-12 text-secondary">
+                                                            {/* <FontAwesomeIcon icon="comment" /><FontAwesomeIcon icon="retweet" /> */}
+                                                            <i class="material-icons icon-sm mr-5">comment</i><i class="material-icons icon-sm mr-5">reply</i><i class="material-icons icon-sm mr-5">favorite_border</i><i class="material-icons icon-sm mr-5">mail_outline</i>
                                                           </div>
                                                         </div>
                                                       </div>
@@ -264,13 +267,35 @@ class UITwitter extends React.Component{
                   </div>
                 </div>
                 <div class="col-3">
-                  <div class="container-fluid">
+                  <div class="container-fluid p-0">
                     <div class="row">
                       <div class="col-12 bg-white">
-                        <div class="container-fluid">
+                        <div class="container-fluid p-0 pt-2">
                           <div class="row">
                             <div class="col-12">
-                              CONTENIDO
+                              <big><b>A quién seguir </b></big>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 mt-3 bg-white">
+                        <div class="container-fluid p-0">
+                          <div class="row">
+                            <div class="col-12 text-secondary line-height-1 py-3">
+                              <small class="">
+                                © 2019 TwitterSobre nosotros Centro de Ayuda Condiciones Política de privacidad Cookies Información sobre anuncios Marca Blog Estado Aplicaciones Empleos Marketing Empresas Desarrolladores
+                              </small>
+                            </div>
+                            <div class="col-12 p-0">
+                              <div class="dropdown-divider">
+
+                              </div>
+                            </div>
+                            <div class="col-12 text-primary pb-3">
+                              <small>
+                                Publicitar en Twitter
+                              </small>
                             </div>
                           </div>
                         </div>
@@ -291,6 +316,14 @@ class UITwitter extends React.Component{
 }
 
 class HeaderTwitter extends React.Component{
+  constructor() {
+     super();
+     this.profile = {
+      user: "@Fab",
+      name: "Javian con B de Vaca",
+      photo: "https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg"
+    };
+  }
   render(){
     return(
       <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
@@ -300,9 +333,9 @@ class HeaderTwitter extends React.Component{
         </button> */}
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active text-secondary">
-              <a class="nav-link" href="#"><small><i class="material-icons float-left mr-2">home</i><b>Inicio</b></small></a>
+          <ul class="navbar-nav ml-auto mr-5">
+            <li class="nav-item active">
+              <a class="nav-link text-primary" href="#"><small><i class="material-icons float-left mr-2">home</i><b>Inicio</b></small></a>
             </li>
             <li class="nav-item text-secondary">
               <a class="nav-link" href="#"><small><i class="material-icons float-left mr-2">notifications_none</i><b>Notificaciones</b></small></a>
@@ -311,9 +344,15 @@ class HeaderTwitter extends React.Component{
               <a class="nav-link" href="#"><small><i class="material-icons float-left mr-2">mail_outline</i><b>Mensajes</b></small></a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <div class="w-25 text-center mx-5">
+            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png" width="30px" class="mx-auto"/>
+          </div>
+          <form class="form-inline mr-auto ml-5">
+            <div class="input-group input-group-sm">
+              <input class="form-control mr-sm-2 search" type="search" placeholder="Buscar en Twitter" aria-label="Search"/>
+            </div>
+            <img src={this.profile.photo} class="rounded-circle mr-3 ml-1" width="35px"/>
+            <button class="btn border-25 btn-primary my-2 my-sm-0 px-3" type="button"><small><b>Twittear</b></small></button>
           </form>
         </div>
       </nav>
