@@ -201,7 +201,7 @@ class UITwitter extends React.Component{
                               <div>
                                 <b class="text-primary">{trend.trend}</b>
                                 <p class="line-height-0">
-                                  <small class="text-secondary line-height-0">{trend.content}</small>
+                                  <small class="text-secondary line-height-0" dangerouslySetInnerHTML={{__html: trend.content}}/>
                                 </p>
                               </div>
                             )
