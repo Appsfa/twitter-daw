@@ -113,6 +113,7 @@ class UITwitter extends React.Component{
      {
        this.tweets.push({user: this.profile.user, name: this.profile.name, photo: this.profile.photo, tweet: event.target.value, time: "1m"});
        console.log(this.tweets);
+       document.getElementById("txtTweet1").value = "";
      }
 
      ReactDOM.render(
