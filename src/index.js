@@ -31,7 +31,9 @@ class UITwitter extends React.Component{
       user: "@Fab",
       name: "Javian con B de Vaca",
       photo: "https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg"
-    };
+    }
+
+    this.twittear = this.twittear.bind(this);
 
     this.trends = [
       {
@@ -103,6 +105,21 @@ class UITwitter extends React.Component{
         photo: "https://pbs.twimg.com/profile_images/478571967809732608/gUMBaY9F_400x400.jpeg",
       }
     ];
+   }
+
+   twittear(event)
+   {
+     if(event.keyCode == 13)
+     {
+       this.tweets.push({user: this.profile.user, name: this.profile.name, photo: this.profile.photo, tweet: event.target.value, time: "1m"});
+       console.log(this.tweets);
+     }
+
+     ReactDOM.render(
+       <UITwitter/>,
+       document.getElementById('root')
+     );
+
    }
 
   render(){
@@ -210,7 +227,7 @@ class UITwitter extends React.Component{
                                       <div class="input-group-prepend">
                                         <span class="input-group-text bg-transparent border-0"><img src={this.profile.photo} width="26px" alt="foto" class="rounded-circle"/></span>
                                       </div>
-                                      <input type="text" class="form-control border-right-0 border-right-25" id="txtTweet1" placeholder="¿Qué esta pasando?"/>
+                                      <input type="text" onKeyUp={this.twittear.bind(this)} class="form-control border-right-0 border-right-25" id="txtTweet1" placeholder="¿Qué esta pasando?"/>
                                       <div class="input-group-append border-left-0">
                                         <span class="input-group-text bg-white border-left-0 border-left-25"><i class="material-icons text-primary">insert_photo</i></span>
                                       </div>
