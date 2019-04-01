@@ -9,6 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIgloo } from '@fortawesome/free-solid-svg-icons'
 // import { faComment } from '@fortawesome/free-solid-svg-icons'
 import { faComment, faRetweet } from '@fortawesome/free-solid-svg-icons'
+// var moment = require('moment')
+import Moment from 'react-moment'
+import 'moment-timezone'
+import 'moment/locale/es-us'
+import ReactTimeout from 'react-timeout'
 library.add(faIgloo, faComment, faRetweet)
 // import $ from 'jquery';
 
@@ -116,6 +121,7 @@ class UITwitter extends React.Component{
     ];
 
     this.onSubmit = this.handleSubmit.bind(this);
+    // this.deleteTweet.bind(this);
 
    }
 
@@ -123,6 +129,32 @@ class UITwitter extends React.Component{
     fetch('https://still-garden-88285.herokuapp.com/draft_tweets')
       .then(response => response.json())
       .then(data => (this.setState({ tweets: data.draft_tweets, isLoading: false }), console.log(this.state)));
+  }
+
+  handleHover(e){
+    console.log(e.target.parentElement.getAttribute('data-target'));
+    document.getElementById(e.target.parentElement.getAttribute('data-target')).classList.add("show", "active");
+  }
+
+  handleHoverMouseOutIcon(e){
+    console.log(e.target.parentElement.getAttribute('data-target'));
+    document.getElementById(e.target.parentElement.getAttribute('data-target')).classList.remove("show", "active");
+  }
+
+  handleMouseOutDrop(e){
+    e.target.classList.remove("show", "active");
+  }
+
+  deleteTweet(e){
+    console.log(e.target.getAttribute('data-tweet'));
+    let tweet = e.target.getAttribute('data-tweet');
+
+    fetch(`https://still-garden-88285.herokuapp.com/draft_tweets/${tweet}`, {
+    method: 'DELETE',
+    })
+    .then(this.setState({idLoading: true}))
+    .then(setTimeout(this.componentDidMount.bind(this), 500));
+
   }
 
   handleSubmit(e){
@@ -139,10 +171,8 @@ class UITwitter extends React.Component{
             'Content-Type': 'application/json'
         }
     }).then(response => response.json())
-    .then(fetch('https://still-garden-88285.herokuapp.com/draft_tweets')
-      .then(response => response.json())
-      .then(data => (this.setState({ tweets: data.draft_tweets, isLoading: false }), console.log(this.state)))
-      .then(document.getElementById('txtTweet1').value = ""));
+    .then(document.getElementById('txtTweet1').value = "", setTimeout(this.componentDidMount.bind(this), 500)
+      );
   }
 
   render(){
@@ -294,7 +324,15 @@ class UITwitter extends React.Component{
                                                       <img src={tweet.avatar} width="45px" class="rounded-circle"/>
                                                     </div>
                                                     <div class="col-10">
-                                                      <b>{tweet.user_name} </b> <span class="text-secondary">{tweet.user_name} </span> · <span class="text-secondary">{tweet.created_at} </span> <i class="material-icons float-right text-secondary">keyboard_arrow_down</i>
+                                                      <b>{tweet.user_name} </b> <span class="text-secondary">{tweet.user_name} </span> · <span class="text-secondary"><Moment fromNow>{tweet.created_at}</Moment></span>
+
+                                                      <div class="dropdown dropright">
+                                                        <a onMouseEnter={(e) => this.handleHover(e)} data-target={`dropmenu-${tweet.id}`} class="" href="#" role="button" id={`dropdownMenuLink-${tweet.id}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons float-right text-secondary">keyboard_arrow_down</i></a>
+                                                        <div onMouseLeave={(e) => this.handleMouseOutDrop(e)} class="dropdown-menu" id={`dropmenu-${tweet.id}`} aria-labelledby={`dropdownMenuLink-${tweet.id}`}>
+                                                          <a class="dropdown-item text-danger" onClick={(e) => this.deleteTweet(e)} data-tweet={tweet.id}>Elimiar</a>
+                                                        </div>
+                                                      </div>
+
                                                       <p>
                                                         {tweet.description}
                                                       </p>
