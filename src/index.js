@@ -25,15 +25,24 @@ let profile = {
 
 class UITwitter extends React.Component{
 
-  constructor() {
-     super();
+  constructor(props) {
+     super(props);
+
+     this.state = {
+      tweets: [],
+      isLoading: true,
+      profile: {
+        user: "@Fab",
+        name: "Fabián Moreno Islas",
+        photo: "https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg"
+      }
+    };
+
      this.profile = {
       user: "@Fab",
-      name: "Javian con B de Vaca",
+      name: "Fabián Moreno Islas",
       photo: "https://pbs.twimg.com/profile_images/1073808672072056832/1NyNN4tl_400x400.jpg"
     }
-
-    this.twittear = this.twittear.bind(this);
 
     this.trends = [
       {
@@ -105,25 +114,58 @@ class UITwitter extends React.Component{
         photo: "https://pbs.twimg.com/profile_images/478571967809732608/gUMBaY9F_400x400.jpeg",
       }
     ];
-   }
 
-   twittear(event)
-   {
-     if(event.keyCode == 13)
-     {
-       this.tweets.push({user: this.profile.user, name: this.profile.name, photo: this.profile.photo, tweet: event.target.value, time: "1m"});
-       console.log(this.tweets);
-       document.getElementById("txtTweet1").value = "";
-     }
-
-     ReactDOM.render(
-       <UITwitter/>,
-       document.getElementById('root')
-     );
+    this.onSubmit = this.handleSubmit.bind(this);
 
    }
+
+   componentDidMount() {
+    fetch('https://still-garden-88285.herokuapp.com/draft_tweets')
+      .then(response => response.json())
+      .then(data => (this.setState({ tweets: data.draft_tweets, isLoading: false }), console.log(this.state)));
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+
+    fetch('https://still-garden-88285.herokuapp.com/draft_tweets', {
+    method: 'POST',
+    body: JSON.stringify({
+      user_name: this.state.profile.name,
+      description: document.getElementById('txtTweet1').value,
+      avatar: this.state.profile.photo
+    }),
+    headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.json())
+    .then(fetch('https://still-garden-88285.herokuapp.com/draft_tweets')
+      .then(response => response.json())
+      .then(data => (this.setState({ tweets: data.draft_tweets, isLoading: false }), console.log(this.state)))
+      .then(document.getElementById('txtTweet1').value = ""));
+  }
 
   render(){
+
+    if(this.state.isLoading)
+    {
+      return (
+        <div class="container-fluid">
+          <div clas="row">
+            <div class="col-12 text-center pt-5">
+              <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div class="container-fluid bg-primary">
         <div class="row">
@@ -224,15 +266,17 @@ class UITwitter extends React.Component{
                                 <div class="row">
 
                                   <div class="col-12 bg-secondary py-2">
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <span class="input-group-text bg-transparent border-0"><img src={this.profile.photo} width="26px" alt="foto" class="rounded-circle"/></span>
+                                    <form onSubmit={(e) => this.handleSubmit(e)}>
+                                      <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text bg-transparent border-0"><img src={this.profile.photo} width="26px" alt="foto" class="rounded-circle"/></span>
+                                        </div>
+                                        <input type="text" class="form-control border-right-0 border-right-25" id="txtTweet1" placeholder="¿Qué esta pasando?"/>
+                                        <div class="input-group-append border-left-0">
+                                          <span class="input-group-text bg-white border-left-0 border-left-25"><i class="material-icons text-primary">insert_photo</i></span>
+                                        </div>
                                       </div>
-                                      <input type="text" onKeyUp={this.twittear.bind(this)} class="form-control border-right-0 border-right-25" id="txtTweet1" placeholder="¿Qué esta pasando?"/>
-                                      <div class="input-group-append border-left-0">
-                                        <span class="input-group-text bg-white border-left-0 border-left-25"><i class="material-icons text-primary">insert_photo</i></span>
-                                      </div>
-                                    </div>
+                                    </form>
                                   </div>
 
                                   {/* TWEETS */}
@@ -240,18 +284,19 @@ class UITwitter extends React.Component{
                                     <div class="container-fluid p-0">
                                       <div class="row">
                                         {
-                                          this.tweets.map((tweet, i) => {
+
+                                          this.state.tweets.map((tweet, i) => {
                                             return(
-                                              <div class="col-12">
+                                              <div class="col-12" id={tweet.id}>
                                                 <div class="container-fluid p-0 pt-2">
                                                   <div class="row">
                                                     <div class="col-2 text-right">
-                                                      <img src={tweet.photo} width="45px" class="rounded-circle"/>
+                                                      <img src={tweet.avatar} width="45px" class="rounded-circle"/>
                                                     </div>
                                                     <div class="col-10">
-                                                      <b>{tweet.name} </b> <span class="text-secondary">{tweet.user} </span> - <span class="text-secondary">{tweet.time} </span> <i class="material-icons float-right text-secondary">keyboard_arrow_down</i>
+                                                      <b>{tweet.user_name} </b> <span class="text-secondary">{tweet.user_name} </span> · <span class="text-secondary">{tweet.created_at} </span> <i class="material-icons float-right text-secondary">keyboard_arrow_down</i>
                                                       <p>
-                                                        {tweet.tweet}
+                                                        {tweet.description}
                                                       </p>
                                                       <div class="container-fluid p-0">
                                                         <div class="row">
@@ -269,7 +314,7 @@ class UITwitter extends React.Component{
                                                 </div>
                                               </div>
                                             )
-                                          })
+                                          }).reverse()
                                         }
                                       </div>
                                     </div>
